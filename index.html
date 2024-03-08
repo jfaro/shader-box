@@ -10,11 +10,17 @@
 
 <body>
   <div id="app">
-    <div id="shader-container"></div>
-    <div id="shader-label"></div>
-    <div id="button-row">
-      <button id="button-prev">Previous</button>
-      <button id="button-next">Next</button>
+    <div id="main-row">
+      <button id="button-prev">&lt;</button>
+      <div id="content">
+        <div id="shader"></div>
+        <div id="overlay">
+          <div id="overlay-text">
+            <div id="shader-label"></div>
+          </div>
+        </div>
+      </div>
+      <button id="button-next">&gt;</button>
     </div>
   </div>
   <script type="module" src="/src/main.ts"></script>

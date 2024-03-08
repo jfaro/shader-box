@@ -1,4 +1,4 @@
-import { BasicVertex, GradientGreenRedFragment, GradientRedGreenFragment } from "./Shaders"
+import { FragGradient, FragSolid, FragTime, VertBasic } from "./Shaders"
 
 interface IShader {
     name: string;
@@ -6,18 +6,20 @@ interface IShader {
     fragment: string;
 }
 
-type Catalog = IShader[];
-
-// Entire shader box catalog.
-export const SHADER_CATALOG: Catalog = [
+export const SHADER_CATALOG: IShader[] = [
     {
-        name: "Basic Green-Red",
-        vertex: BasicVertex,
-        fragment: GradientGreenRedFragment,
+        name: "Solid",
+        vertex: VertBasic,
+        fragment: FragSolid,
     },
     {
-        name: "Basic Red-Green",
-        vertex: BasicVertex,
-        fragment: GradientRedGreenFragment,
+        name: "Gradient",
+        vertex: VertBasic,
+        fragment: FragGradient,
+    },
+    {
+        name: "Time",
+        vertex: VertBasic,
+        fragment: FragTime,
     }
 ]

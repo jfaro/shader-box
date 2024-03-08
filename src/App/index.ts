@@ -47,7 +47,7 @@ export default class App {
         this.renderer.setPixelRatio(window.devicePixelRatio)
 
         // Add renderer to DOM.
-        const app = document.getElementById("shader-container");
+        const app = document.getElementById("shader");
         if (app) {
             app.appendChild(this.renderer.domElement);
         } else {

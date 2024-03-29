@@ -1,6 +1,8 @@
 import * as THREE from "three"
 import { SHADER_CATALOG } from "../constants";
 
+const shaders = SHADER_CATALOG.reverse();
+
 export default class App {
     // User selection state.
     activeShader: number;
@@ -34,8 +36,8 @@ export default class App {
         this.geometry = new THREE.PlaneGeometry(2, 2);
         this.material = new THREE.ShaderMaterial({
             uniforms: this.uniforms,
-            vertexShader: SHADER_CATALOG[0].vertex,
-            fragmentShader: SHADER_CATALOG[0].fragment
+            vertexShader: shaders[0].vertex,
+            fragmentShader: shaders[0].fragment
         });
 
         // Setup scene.
@@ -114,13 +116,13 @@ export default class App {
         const shaderLabel = document.getElementById("shader-label");
         if (shaderLabel) {
             shaderLabel.innerHTML = "";
-            shaderLabel.append(SHADER_CATALOG[this.activeShader].name)
+            shaderLabel.append(shaders[this.activeShader].name)
         }
     }
 
     // Set the active shader to the next in the catalog.
     nextShader() {
-        this.activeShader = (this.activeShader + 1) % SHADER_CATALOG.length;
+        this.activeShader = (this.activeShader + 1) % shaders.length;
         this.updateMaterial();
         this.updateLabel();
     }
@@ -128,7 +130,7 @@ export default class App {
     // Set the active shader to the previous in the catalog.
     prevShader() {
         if (this.activeShader == 0) {
-            this.activeShader = SHADER_CATALOG.length - 1;
+            this.activeShader = shaders.length - 1;
         } else {
             this.activeShader = this.activeShader - 1;
         }
@@ -138,8 +140,8 @@ export default class App {
 
     // Update the active material used in the scene.
     updateMaterial() {
-        this.material.vertexShader = SHADER_CATALOG[this.activeShader].vertex;
-        this.material.fragmentShader = SHADER_CATALOG[this.activeShader].fragment;
+        this.material.vertexShader = shaders[this.activeShader].vertex;
+        this.material.fragmentShader = shaders[this.activeShader].fragment;
         this.material.needsUpdate = true
     }
 }

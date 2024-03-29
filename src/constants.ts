@@ -1,4 +1,4 @@
-import { FragGradient, FragSolid, FragTime, VertBasic } from "./Shaders"
+import { FragGradient, FragSolid, FragTime, Smoothstep, VertBasic } from "./Shaders"
 
 interface IShader {
     name: string;
@@ -21,5 +21,10 @@ export const SHADER_CATALOG: IShader[] = [
         name: "Time",
         vertex: VertBasic,
         fragment: FragTime,
+    },
+    {
+        name: "Smoothstep",
+        vertex: VertBasic,
+        fragment: Smoothstep,
     }
 ]
